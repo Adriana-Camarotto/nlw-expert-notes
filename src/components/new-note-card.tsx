@@ -27,9 +27,11 @@ export function NewNoteCard({ onNoteCreated } : NewNoteCardProps) {
   //saving the new note
   function handleSaveNote(event: FormEvent) {
     event.preventDefault();
-    
+  
     onNoteCreated(content);
-    
+
+    setContent('');
+
     toast.success('New note saved successfully!');
   }
 
@@ -75,7 +77,8 @@ export function NewNoteCard({ onNoteCreated } : NewNoteCardProps) {
                   autoFocus
                   className="text-sm leading-6 text-slate-400 bg-transparent resize-none flex-1 outline-none"
                   onChange={handleContentChanged} //when the use erase the text come back to the onboard
-                />
+                  value={content}
+                  />
               )}
             </div>
 
