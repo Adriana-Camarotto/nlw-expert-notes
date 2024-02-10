@@ -31,6 +31,7 @@ export function NewNoteCard({ onNoteCreated } : NewNoteCardProps) {
     onNoteCreated(content);
 
     setContent('');
+    setShouldShowOnboarding(true);
 
     toast.success('New note saved successfully!');
   }
