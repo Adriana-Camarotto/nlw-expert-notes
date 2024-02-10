@@ -4,7 +4,15 @@ import { NoteCard } from "./components/note-card";
 import { useState } from "react";
 
 export function App() {
-  const [notes, setNotes] = useState<Note[]>([]);
+   const [notes, setNotes] = useState<Note[]>(() => {
+   const notesOnStorage = localStorage.getItem('notes');
+   
+    if (notesOnStorage) {
+    return JSON.parse(notesOnStorage)
+       } 
+       
+       return []
+      });
 
   function onNoteCreated(content: string) {
     const newNote = {
@@ -12,8 +20,11 @@ export function App() {
       date: new Date(),
       content,
     };
-
-    setNotes([newNote, ...notes]);
+    
+    const notesArray = [newNote, ...notes]
+    setNotes(notesArray);
+    //localStorge is the browser API that stores notes in local storage.
+    localStorage.setItem('notes', JSON.stringify(notesArray));
   }
   return (
     <div className="mx-auto max-w-6xl my-12 space-y-6 p-5">
@@ -24,6 +35,7 @@ export function App() {
           type="text"
           placeholder="Search in your notes..."
           className="w-full bg-transparent text-3xl font-semibold tracking-tight outline-none placeholder:text-slate-500"
+        
         />
       </form>
 
