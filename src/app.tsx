@@ -1,7 +1,7 @@
 import logo from "./assets/Logo.svg";
 import { NewNoteCard } from "./components/new-note-card";
 import { NoteCard } from "./components/note-card";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 export function App() {
   const [search, setSearch] = useState("");

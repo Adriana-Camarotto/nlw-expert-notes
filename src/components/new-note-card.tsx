@@ -36,6 +36,10 @@ export function NewNoteCard({ onNoteCreated } : NewNoteCardProps) {
     toast.success('New note saved successfully!');
   }
 
+  function handleStartRecording(){
+    
+  }
+
 
   return (
     <Dialog.Root>
@@ -61,7 +65,7 @@ export function NewNoteCard({ onNoteCreated } : NewNoteCardProps) {
               {shouldShowOnboarding ? (
                 <p className="text-sm leading-6 text-slate-400">
                   Begin by{" "}
-                  <button className="font-medium text-lime-400 hover:underline">
+                  <button onClick={handleStartRecording} className="font-medium text-lime-400 hover:underline">
                     recording an audio note
                   </button>{" "}
                   or, if you prefer,{" "}
