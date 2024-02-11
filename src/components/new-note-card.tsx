@@ -10,6 +10,7 @@ interface NewNoteCardProps {
 export function NewNoteCard({ onNoteCreated } : NewNoteCardProps) {
   const [shouldShowOnboarding, setShouldShowOnboarding] = useState(true);
   const [content, setContent] = useState('');
+  const [isRecording, setIsRecording] = useState(false);
 
   function handleStartEditor() {
     setShouldShowOnboarding(false);
@@ -37,7 +38,11 @@ export function NewNoteCard({ onNoteCreated } : NewNoteCardProps) {
   }
 
   function handleStartRecording(){
-    
+    setIsRecording(true);
+  }
+
+  function setStopRecording() {
+    setIsRecording(false);
   }
 
 
@@ -65,11 +70,16 @@ export function NewNoteCard({ onNoteCreated } : NewNoteCardProps) {
               {shouldShowOnboarding ? (
                 <p className="text-sm leading-6 text-slate-400">
                   Begin by{" "}
-                  <button onClick={handleStartRecording} className="font-medium text-lime-400 hover:underline">
+                  <button 
+                  type="button" 
+                  onClick={handleStartRecording} 
+                  className="font-medium text-lime-400 hover:underline"
+                  >
                     recording an audio note
                   </button>{" "}
-                  or, if you prefer,{" "}
+                    or, if you prefer,{" "}
                   <button
+                    type="button"
                     onClick={handleStartEditor}
                     className="font-medium text-lime-400 hover:underline"
                   >
@@ -86,14 +96,23 @@ export function NewNoteCard({ onNoteCreated } : NewNoteCardProps) {
                   />
               )}
             </div>
-
-            <button
+                {isRecording ? (
+                  <button
+                  type="button"
+                  onClick={setStopRecording}
+                  className="w-full bg-slate-900 py-4 text-center text-sm text-slate-300 outline-none font-medium hover:bg-slate-100"
+                >
+                  Recording! (click to stop)
+                </button>
+                ) : (
+                  <button
               type="submit"
               className="w-full bg-lime-400 py-4 text-center text-sm text-lime-950 outline-none font-medium hover:bg-lime-500"
             >
               Save note
             </button>
-          </form>
+                )} 
+            </form>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
