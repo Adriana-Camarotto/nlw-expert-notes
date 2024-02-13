@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import * as Dialog from "@radix-ui/react-dialog";
 import { formatDistanceToNow } from "date-fns";
 import { enGB } from "date-fns/locale";
@@ -5,12 +6,29 @@ import { X } from 'lucide-react';
 
 interface NoteCardProps {
   note: {
+    id: string;
     date: Date;
     content: string;
   };
+  onDelete: (id: string) => void;
 }
 
-export function NoteCard({ note }: NoteCardProps) {
+export function NoteCard({ note, onDelete }: NoteCardProps) {
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+
+  const openDeleteDialog = () => { 
+    setIsDeleteDialogOpen(true);
+  };
+  
+  const closeDeleteDialog = () => {
+    setIsDeleteDialogOpen(false);    
+  };
+  
+  const handleDelete = () => {
+    onDelete(note.id);
+    closeDeleteDialog();
+  };
+  
   return (
     <Dialog.Root>
       <Dialog.Trigger className="rounded-md text-left flex flex-col bg-slate-800 p-5 gap-3 overflow-hidden relative outline-none hover:ring-2 hover:ring-slate-600 focus:ring-2 focus:ring-lime-400">
@@ -42,6 +60,7 @@ export function NoteCard({ note }: NoteCardProps) {
           <button 
             type="button"
             className="w-full bg-slate-800 py-4 text-center text-sm text-slate-300 outline-none font-medium group"
+            onClick={handleDelete} 
           >
             Would you like to <span className="text-red-400 group-hover:underline">delete this note</span>?
           </button>

@@ -3,6 +3,7 @@ import { NewNoteCard } from "./components/new-note-card";
 import { NoteCard } from "./components/note-card";
 import { ChangeEvent, useState } from "react";
 
+
 export function App() {
   const [search, setSearch] = useState("");
   const [notes, setNotes] = useState<Note[]>(() => {
@@ -38,7 +39,10 @@ export function App() {
   ? notes.filter(note => note.content.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
   : notes
 
-
+  function handleDelete(id: ''): void {
+    setNotes(notes.filter(note => note.id !== id));
+  }
+  
   return (
     <div className="mx-auto max-w-6xl my-12 space-y-6 p-5">
       <img src={logo} alt="NLW Expert" />
@@ -56,7 +60,7 @@ export function App() {
       <div className="grid grid-cols-3 gap-6 auto-rows-[250px]">
         <NewNoteCard onNoteCreated={onNoteCreated} />
         {filteredNotes.map((note) => {
-          return <NoteCard key={note.id} note={note} />;
+          return <NoteCard key={note.id} note={note} onDelete={handleDelete} />;
         })}
       </div>
     </div>

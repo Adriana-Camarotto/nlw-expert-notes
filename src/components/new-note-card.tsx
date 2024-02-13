@@ -7,6 +7,8 @@ interface NewNoteCardProps {
   onNoteCreated: (content: string) => void; 
 }
 
+let speechRecognition: speechRecognition | null = null;
+
 export function NewNoteCard({ onNoteCreated } : NewNoteCardProps) {
   const [shouldShowOnboarding, setShouldShowOnboarding] = useState(true);
   const [content, setContent] = useState('');
@@ -47,7 +49,7 @@ export function NewNoteCard({ onNoteCreated } : NewNoteCardProps) {
       || 'webkitSpeechRecognition' in window
 
       if (!isSpeechRecognitionAPIAvailable) { 
-        alert('Unfortunately, your browser does not support the navigation API.')
+        alert('Unfortunately, your browser does not support the navigation API. Try Crome.')
       return//so that no code below this executes
       }
 
@@ -56,9 +58,9 @@ export function NewNoteCard({ onNoteCreated } : NewNoteCardProps) {
 
       const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition //intall ( npm install -D @types/dom-speech-recognition)
       
-      const speechRecognition = new SpeechRecognitionAPI();
+      speechRecognition = new SpeechRecognitionAPI(); //don`t use const because speechRecognition is a global variable and it is already declared at the top.
 
-      speechRecognition.lang = 'en-GB, en-US, pt-BR';
+      speechRecognition.lang = 'en-GB';
       speechRecognition.continuous = true; //Will not stop to recording until you say manually to do so.
       speechRecognition.maxAlternatives = 1; //Bring only one alternative word, when it`s dont understand what I am saying.
       speechRecognition.interimResults = true; //Bring the results of the text as I speak.
@@ -80,8 +82,12 @@ export function NewNoteCard({ onNoteCreated } : NewNoteCardProps) {
 
   function setStopRecording() {
     setIsRecording(false);
+    
+    if (speechRecognition !== null) {
+      speechRecognition.stop();
+      }
 
-    toast.success('New note saved successfully!');
+    // toast.success('New note saved successfully!');
   }
 
 
