@@ -11,7 +11,7 @@
 
 ## 📌 Deployed site
 
-🎯  [Click here to access!]([(https://adriana-camarotto.github.io/nlw-expert-notes/)])
+🎯  [Click here to access!]([https://adriana-camarotto.github.io/nlw-expert-notes/])
 
 ---
 
