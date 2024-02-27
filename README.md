@@ -3,7 +3,7 @@
 # ✨ Notes
 
 ## 📷 Screenshot
-![preview](./src/Assets/screenshotHome.png)
+![preview](./src/Assets/demo.webm)
  
 
 ---  
