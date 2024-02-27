@@ -4,7 +4,7 @@
 # ✨ Notes
 
 ## 📷 Screenshot
-![preview](./src/assets/demo.webm) 
+![preview](./src/assets/Screenshot.png) 
  
 
 ---  
