@@ -1,9 +1,10 @@
+
 [![Work in Progress](https://img.shields.io/badge/status-work%20in%20progress-yellow)](https://shields.io/)
 
 # ✨ Notes
 
 ## 📷 Screenshot
-![preview](./src/Assets/demo.webm)
+![preview](./src/assets/demo.webm) 
  
 
 ---  
