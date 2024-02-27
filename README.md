@@ -1,23 +1,38 @@
-# React + TypeScript + Vite
+[![Work in Progress](https://img.shields.io/badge/status-work%20in%20progress-yellow)](https://shields.io/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# ✨ Notes
 
-Currently, two official plugins are available:
+## 📷 Screenshot
+![preview](./src/Assets/screenshotHome.png)
+ 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---  
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 📌 Deployed site
 
-- Configure the top-level `parserOptions` property like this:
+🎯  [Click here to access!](https://adricamarottoportfolio.netlify.app/)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
+
+---
+
+## 🚀 Tecnologies
+
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+- React
+- npm
+
+---
+
+## 📧 Contact
+
+adriana.camarotto@gmail.com
+
+---
+
     sourceType: 'module',
     project: ['./tsconfig.json', './tsconfig.node.json'],
     tsconfigRootDir: __dirname,
